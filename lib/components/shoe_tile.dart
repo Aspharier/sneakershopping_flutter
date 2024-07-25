@@ -1,10 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:sneakershopping_flutter/models/shoe.dart';
 
 class ShoeTile extends StatelessWidget {
-  const ShoeTile({super.key});
+  Shoe shoe;
+  ShoeTile({super.key,required this.shoe});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      margin: EdgeInsets.only(left: 25),
+      width: 280,
+      decoration: BoxDecoration(color: Colors.grey[100],
+      borderRadius: BorderRadius.circular(12)),
+      child: Column(
+        children: [
+          //shoe picture
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(shoe.imagePath),
+          ),
+
+
+          //description
+          Text(shoe.description,
+            style: TextStyle(
+              color: Colors.grey[600],
+
+          ),
+          ),
+
+
+
+          //price details
+
+
+          //button to add to cart
+        ],
+      ),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sneakershopping_flutter/components/shoe_tile.dart';
+import 'package:sneakershopping_flutter/models/shoe.dart';
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
@@ -19,7 +20,7 @@ class _ShopPageState extends State<ShopPage> {
            decoration: BoxDecoration(color: Colors.grey[200],
            borderRadius: BorderRadius.circular(8)),
            child: const Row(
-             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
                Text('Search',
                style: TextStyle(color: Colors.grey),),
@@ -45,7 +46,7 @@ class _ShopPageState extends State<ShopPage> {
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              crossAxisAlignment: CrossAxisAlignment.end,
              children: [
-               Text('Hot Picks ',
+               Text('Hot Picks 🔥',
                  style: TextStyle(
                  fontWeight: FontWeight.bold,
                  fontSize: 24,
@@ -63,8 +64,21 @@ class _ShopPageState extends State<ShopPage> {
 
          const SizedBox(height: 10,),
 
-         Expanded(child: ListView.builder(itemBuilder: (context,index) {
-           return ShoeTile();
+         Expanded(child: ListView.builder(
+           itemCount: 4,
+           scrollDirection: Axis.horizontal,
+           itemBuilder: (context,index) {
+           
+           //creating a shoe
+           Shoe shoe = Shoe(
+               name: 'Air Jordan',
+               price: '240',
+               imagePath: 'lib/images/a2.png',
+               description: 'cool shoe'
+           );
+           return ShoeTile(
+             shoe: shoe,
+           );
          }, ),
          ),
 
